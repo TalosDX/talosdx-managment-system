@@ -1,4 +1,4 @@
-# Multifunctional CMS written on Kotlin
+# Life Managment System
 ## Structure
 - backend [jvm]
 - bot-discord [jvm]
