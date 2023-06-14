@@ -1,6 +1,8 @@
 spring:
   jpa:
     database: postgresql
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: false
     hibernate:
       ddl-auto: validate
@@ -13,6 +15,7 @@ spring:
       max-lifetime: 300000
   main:
     banner-mode: off
+    allow-bean-definition-overriding: true
   jackson:
     deserialization:
       READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE: true
@@ -27,7 +30,3 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     locations: classpath:db/migration
-
-app:
-  telegram:
-    token: "token"

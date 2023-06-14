@@ -43,11 +43,12 @@ class UserServiceImpl(
 
     override fun blockUser(
         blockingReasonIn: String,
-        userId: Long?,
+        userId: Long,
         userIn: User?,
         blockingUntilDateIn: ZonedDateTime?,
-    ) = if (userId != null || userIn?.id != null) {
-        val id: Long = (userId ?: userIn?.id) as Long
+    ) = if (userId != 0L || userIn?.id != 0L) {
+
+        val id: Long = userId
         userRepository.getReferenceById(id).apply {
             isBlocked = true
             blockingDate = ZonedDateTime.now()

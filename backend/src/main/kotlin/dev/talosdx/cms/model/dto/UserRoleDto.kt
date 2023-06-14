@@ -11,5 +11,5 @@ data class UserRoleDto(
     @SerialName("description")
     val description: String,
     @SerialName("id")
-    override var id: Long? = null,
+    override var id: Long = 0,
 ) : BaseDto<Long>() {}

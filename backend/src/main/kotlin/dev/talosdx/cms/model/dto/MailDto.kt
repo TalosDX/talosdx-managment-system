@@ -12,7 +12,7 @@ data class MailDto(
     val toUsers: MutableList<User>,
     val fromUser: User?,
     var isSent: Boolean,
-    override var id: Long? = null,
+    override var id: Long = 0,
     override val createdDate: ZonedDateTime = ZonedDateTime.now(),
     override var modifiedDate: ZonedDateTime = ZonedDateTime.now(),
 ) : BaseLongAuditDto(id, createdDate, modifiedDate) {

@@ -21,6 +21,6 @@ class UserRole(
     @Lazy
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userRole")
     var users: MutableSet<User> = mutableSetOf(),
-    id: Long? = null,
+    id: Long = 0,
 ) : BaseLongAuditEntity(id) {
 }

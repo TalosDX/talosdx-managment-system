@@ -26,7 +26,7 @@ class Mail(
     val fromUser: User?,
     @Column(name = "is_sent", nullable = false)
     var isSent: Boolean,
-    id: Long? = null,
+    id: Long = 0,
 ) : BaseLongAuditEntity(id)
 
 

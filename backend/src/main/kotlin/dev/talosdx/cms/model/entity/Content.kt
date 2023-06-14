@@ -15,7 +15,7 @@ class Content(
     var contentType: ContentType = ContentType.MATERIAL,
     @OneToOne
     var attachment: Attachment? = null,
-    id: Long? = null,
+    id: Long = 0,
 ) : BaseLongAuditEntity(id)
 
 

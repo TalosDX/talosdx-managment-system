@@ -23,7 +23,7 @@ data class UserDto(
     val activationTime: ZonedDateTime?,
     val isActivated: Boolean,
     val activationCode: String? = null,
-    override var id: Long? = null,
+    override var id: Long = 0,
     override val createdDate: ZonedDateTime,
     override var modifiedDate: ZonedDateTime,
 ) : BaseLongAuditDto(id, createdDate, modifiedDate)

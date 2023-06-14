@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 abstract class BaseDto<T> {
-    abstract var id: T?
+    abstract var id: T
 }

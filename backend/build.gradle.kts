@@ -14,16 +14,17 @@ val bcprovJdk15onVersion by extra("1.70")
 repositories { mavenCentral() }
 
 plugins {
-    val kotlinVersion = "1.8.0"
-    id("org.springframework.boot") version "3.0.2"
+    val kotlinVersion = "1.8.22"
+    id("org.springframework.boot") version "3.0.7"
     id("io.spring.dependency-management") version "1.1.0"
-    id("org.asciidoctor.convert") version "2.4.0"
+    id("org.asciidoctor.jvm.convert") version "3.3.2"
 
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
 }
+
 dependencyManagement {
     imports {
         mavenBom("org.testcontainers:testcontainers-bom:${property("testContainersVersion")}")
@@ -31,7 +32,6 @@ dependencyManagement {
 }
 
 dependencies {
-    api(project(":common"))
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinSerializationJsonVersion")
@@ -43,6 +43,7 @@ dependencies {
     }
 
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-mail")
 

@@ -14,7 +14,7 @@ val telegramBotApiVersion by extra("2.5.1")
 repositories { mavenCentral() }
 
 plugins {
-    val kotlinVersion = "1.8.0"
+    val kotlinVersion = "1.8.20"
     id("org.springframework.boot") version "3.0.2"
     id("io.spring.dependency-management") version "1.1.0"
     id("org.asciidoctor.convert") version "2.4.0"
@@ -30,7 +30,6 @@ dependencyManagement {
     }
 }
 dependencies {
-    api(project(":common"))
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-mail")
     implementation("org.springframework.boot:spring-boot-starter-security")

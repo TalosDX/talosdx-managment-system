@@ -7,6 +7,6 @@ data class AttachmentDto(
     val downloadUrl: String,
     override val createdDate: ZonedDateTime,
     override var modifiedDate: ZonedDateTime,
-    override var id: Long? = null,
+    override var id: Long = 0,
 ) : BaseLongAuditDto(id, createdDate, modifiedDate) {
 }

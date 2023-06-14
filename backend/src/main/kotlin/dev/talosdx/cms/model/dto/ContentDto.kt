@@ -13,6 +13,6 @@ class ContentDto(
     val attachment: dev.talosdx.cms.model.entity.Attachment? = null,
     override val createdDate: ZonedDateTime,
     override var modifiedDate: ZonedDateTime,
-    id: Long? = null,
+    id: Long = 0,
 ) : BaseLongAuditDto(id, createdDate, modifiedDate) {
 }

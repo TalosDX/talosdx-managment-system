@@ -1,19 +1,64 @@
-package dev.talosdx.cms.client
+package dev.talosdx.cms.client.openweathermap.v3
 
 
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlin.reflect.full.findAnnotations
 
 @Serializable
 data class WeatherRequest(
     val lat: Double,
     val lon: Double,
     val appid: String,
-    //fixme написать десериализатор из списка в строку
-    val exclude: String,
+    @Serializable(with = ExcludeResponseTypeKSerializer::class)
+    val exclude: Set<ExcludeResponseType>,
     val units: WeatherUnits,
     val lang: WeatherLang,
 )
+
+@Serializable
+enum class ExcludeResponseType {
+    @SerialName("current")
+    CURRENT,
+
+    @SerialName("minutely")
+    MINUTELY,
+
+    @SerialName("hourly")
+    HOURLY,
+
+    @SerialName("daily")
+    DAILY,
+
+    @SerialName("alerts")
+    ALERTS;
+
+    val serialName =
+        this::class.findAnnotations(SerialName::class)
+            .firstOrNull()
+            ?.value ?: name
+
+    companion object {
+        fun serialOf(str: String) = values().firstOrNull { it.serialName == str }
+    }
+}
+
+class ExcludeResponseTypeKSerializer(override val descriptor: SerialDescriptor) :
+    KSerializer<Set<ExcludeResponseType>> {
+
+    override fun serialize(encoder: Encoder, value: Set<ExcludeResponseType>) =
+        encoder.encodeString(value.joinToString { "," })
+
+    override fun deserialize(decoder: Decoder): Set<ExcludeResponseType> =
+        decoder.decodeString().split(",")
+            .mapNotNull { ExcludeResponseType.serialOf(it) }
+            .toSet()
+}
+
 
 @Serializable
 enum class WeatherUnits {
@@ -24,7 +69,7 @@ enum class WeatherUnits {
     METRIC,
 
     @SerialName("imperial")
-    IMPERIAL
+    IMPERIAL,
 }
 
 @Serializable

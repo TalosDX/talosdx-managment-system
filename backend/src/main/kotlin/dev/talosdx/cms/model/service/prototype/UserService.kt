@@ -16,7 +16,7 @@ interface UserService {
 
     fun blockUser(
         blockingReasonIn: String,
-        userId: Long? = null,
+        userId: Long = 0,
         userIn: User? = null,
         blockingUntilDateIn: ZonedDateTime? = null,
     ): Boolean

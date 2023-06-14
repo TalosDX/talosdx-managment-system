@@ -23,7 +23,7 @@ class User(
     @ManyToOne(fetch = FetchType.LAZY)
     var userRole: UserRole,
 
-    @Column(name = "registration_date", nullable = true)
+    @Column(name = "activation_time", nullable = true)
     @TimeZoneStorage
     var activationTime: ZonedDateTime? = null,
 
@@ -54,7 +54,7 @@ class User(
     )
     val permissions: MutableSet<Permission> = mutableSetOf(),
 
-    id: Long? = null,
+    id: Long = 0,
 
     ) : BaseLongAuditEntity(id) {
 

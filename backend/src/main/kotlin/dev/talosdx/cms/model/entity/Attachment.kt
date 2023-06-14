@@ -10,6 +10,6 @@ import jakarta.persistence.Table
 class Attachment(
     @Column(name = "download_url", nullable = false)
     val downloadUrl: String,
-    id: Long? = null,
+    id: Long = 0,
 ) : BaseLongAuditEntity(id) {
 }
